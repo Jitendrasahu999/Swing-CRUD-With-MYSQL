@@ -46,7 +46,14 @@ public class Invoice {
 			pdfPTable.setWidths(cellWidth);
 			
 			//Create Table Cell Here.
-			PdfPCell cell_1 = new PdfPCell(new Paragraph("Cell 1"));
+			Paragraph paragraph1 = new Paragraph(
+					new Phrase(lineSpacing, "INVOICE", FontFactory.getFont(FontFactory.COURIER, fntSize)));
+			
+			PdfPCell cell_1 = new PdfPCell();
+			cell_1.addElement(paragraph1);
+//			cell_1.setBorder(Rectangle.NO_BORDER);
+			cell_1.setBorderColor(BaseColor.WHITE);	
+			
 			PdfPCell cell_2 = new PdfPCell(new Paragraph("Cell 2"));
 			PdfPCell cell_3 = new PdfPCell(new Paragraph("Cell 3"));
 			PdfPCell cell_4 = new PdfPCell(new Paragraph("Cell 4"));
@@ -55,8 +62,7 @@ public class Invoice {
 			pdfPTable.addCell(cell_2);
 			pdfPTable.addCell(cell_3);
 			pdfPTable.addCell(cell_4);
-			
-			
+			cell_1.setBorderColor(BaseColor.BLUE);			
 			
 			document.add(pdfPTable);
 			
